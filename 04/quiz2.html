@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset=utf-8 />
+    <title>source</title>
+    <style>
+        #board{
+          width: 100vw;
+          height: 100vh;  
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+        .black{
+            width: 100px;
+            height: 100px;
+            background-color: black;
+        }
+        .white{
+            width: 100px;
+            height: 100px;
+            background-color: white;
+        }
+        .patron{
+            display: flex;
+            flex-direction: row;
+        }
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="board">
+</div>
+<script>
+
+    
+    class Board{
+        constructor(patronNum){
+            this.board = document.getElementById("board");
+            this.html = ''
+            this.setBoard(patronNum)
+            this.render()
+        }
+
+        setBoard(patronNum){
+
+           const patron1 = ` 
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                `
+            const patron2 = `
+                <div class="white"></div>
+                <div class="black"></div>
+                <div class="white"></div>
+                <div class="black"></div>
+            `
+            for(let i = 0 ; i < patronNum ; i++){
+                this.html += `<div class="patron"> ${patron1} </div>`        
+                this.html += `<div class="patron"> ${patron2} </div>`        
+            }
+        }
+
+        addHandlerClick(){
+            this.board.addEventListener('click', (e)=>{
+                const patron= e.target.closest('.patron')
+                if(!patron) return
+                if(!!this.board.querySelector('.red')){
+                  this.board.querySelector('.red').classList.remove('red')
+                }
+               
+                e.target.classList.add('red')
+            })
+        }
+
+        render(){
+            this.board.innerHTML = this.html
+        }
+    }
+
+    const board = new Board(2)
+    board.addHandlerClick()
+</script>
+</body>
+</html>
