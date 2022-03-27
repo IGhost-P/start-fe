@@ -4,14 +4,50 @@
 <head>
     <meta charset="UTF-8">
     <title>문제소스</title>
+    <style>
+        .container{
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        img{
+            width: 200px;
+            height: auto;
+            margin: 30px;
+            border: 1px solid #ceccec;
+        }
+
+        button{
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            text-align: center;
+            font-size: 1.1rem;
+            background-color: white;
+            border: 1px solid #ceccec;
+            border-radius: 2px;
+            margin: 20px;
+        }
+        .count--num{
+            font-size: 1.2rem;
+        }
+        .count--num > span{
+            color: #ceccec;
+        }
+    
+    </style>
 </head>
 <body>
-
+<div class="container">
 <div id="wrap"></div>
 <div class="count--box">
     <button class="count--left"><</button>
     <span class="count--num"></span>
     <button class="count--right">></button>
+</div>
 </div>
 
 <script>
@@ -82,7 +118,7 @@
                 `
             }).join(' ')
             this.wrap.innerHTML = html
-            this.countText.textContent = `${this.page}/3` 
+            this.countText.innerHTML = `${this.page}<span> / 3 </span>` 
         }
     }
 
