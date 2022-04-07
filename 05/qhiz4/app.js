@@ -11,11 +11,11 @@ function drag() {
 
   function mouseDown(e) {
     e.preventDefault();
+    const { pageX, pageY } = e;
 
     dragging = this;
-
-    mouseX = e.pageX;
-    mouseY = e.pageY;
+    mouseX = pageX;
+    mouseY = pageY;
     eleX = Number.parseInt(dragging.style.left);
     eleY = Number.parseInt(dragging.style.top);
 
@@ -23,10 +23,10 @@ function drag() {
     document.addEventListener("mouseup", mouseUp);
   }
 
-  function mouseMove(e) {
+  function mouseMove({ pageX, pageY }) {
     if (dragging) {
-      deltaMouseX = e.pageX - mouseX;
-      deltaMouseY = e.pageY - mouseY;
+      deltaMouseX = pageX - mouseX;
+      deltaMouseY = pageY - mouseY;
 
       dragging.style.left = deltaMouseX + eleX + "px";
       dragging.style.top = deltaMouseY + eleY + "px";
