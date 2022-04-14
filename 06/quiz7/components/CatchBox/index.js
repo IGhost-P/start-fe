@@ -5,7 +5,6 @@ export function CatchBox({ $target, addPoint, losePoint }) {
   this.bugHeight;
   this.bugWidth;
 
-  this.setState = function (nextState) {};
   this.randomLocation = function (max, min) {
     return (this.location = Math.floor(Math.random() * (max - min) + 1) + min);
   };
