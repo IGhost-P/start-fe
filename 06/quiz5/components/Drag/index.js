@@ -1,4 +1,4 @@
-export default function Drag({ $target }) {
+export function Drag({ $target, top, left }) {
   this.dragging = false;
 
   this.mouseX;
@@ -8,9 +8,8 @@ export default function Drag({ $target }) {
 
   this.$box = $target;
   this.$box.addEventListener("mousedown", (e) => this.mouseDown(e));
-  this.$box.style.top = 0;
-  this.$box.style.left = 0;
-
+  this.$box.style.top = top + "px";
+  this.$box.style.left = left + "px";
   this.mouseDown = function (e) {
     e.preventDefault();
 

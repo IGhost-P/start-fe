@@ -1,9 +1,6 @@
-import Drag from "./Drag.js";
+import App from "./App.js";
+import { $ } from "./util/selector.js";
 
-const $ = (selector) => document.querySelector(selector);
+const $app = $("#app");
 
-const $box = $(".box");
-const $box1 = $(".box1");
-
-new Drag({ $target: $box });
-new Drag({ $target: $box1 });
+new App({ $target: $app });
