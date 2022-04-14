@@ -19,7 +19,7 @@ export function Drag({ $target, top, left }) {
     this.mouseY = e.pageY;
     this.eleX = Number.parseInt(this.$box.style.left);
     this.eleY = Number.parseInt(this.$box.style.top);
-
+    this.$box.style.zIndex = 1;
     document.addEventListener("mousemove", (e) => this.mouseMove(e));
     document.addEventListener("mouseup", (e) => this.mouseUp(e));
   };
@@ -36,7 +36,6 @@ export function Drag({ $target, top, left }) {
 
   this.mouseUp = function (e) {
     this.dragging = false;
-
     document.removeEventListener("mouseup", (e) => mouseUp(e));
     document.removeEventListener("mousemove", (e) => mouseMove(e));
   };

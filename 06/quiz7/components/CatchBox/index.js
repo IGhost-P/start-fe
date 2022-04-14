@@ -1,6 +1,10 @@
+import { BUG_SPEED } from "../../constant/bugSpeed.js";
 import { createEl } from "../../util/createEl.js";
 
 export function CatchBox({ $target, addPoint, losePoint }) {
+  this.bugHeight;
+  this.bugWidth;
+
   this.setState = function (nextState) {};
   this.randomLocation = function (max, min) {
     return (this.location = Math.floor(Math.random() * (max - min) + 1) + min);
@@ -13,6 +17,8 @@ export function CatchBox({ $target, addPoint, losePoint }) {
 
     this.box.style.top = top + "px";
     this.box.style.left = left + "px";
+    this.bugHeight = Number(this.box.offsetHeight);
+    this.bugWidth = Number(this.box.offsetWidth);
   };
 
   $target.addEventListener("click", (e) => {
@@ -25,8 +31,16 @@ export function CatchBox({ $target, addPoint, losePoint }) {
   });
 
   setInterval(() => {
-    this.top = this.randomLocation(20, 380);
-    this.left = this.randomLocation(20, 380);
+    this.top = this.randomLocation(
+      this.bugHeight,
+      $target.offsetHeight - this.bugHeight
+    );
+    this.left = this.randomLocation(
+      this.bugWidth,
+      $target.offsetWidth - this.bugWidth
+    );
     this.render(this.top, this.left);
-  }, 1000);
+  }, BUG_SPEED);
+
+  this.render();
 }
