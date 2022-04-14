@@ -1,1 +1,1 @@
-export const BUG_SPEED = 1000;
+export const CHANGE_SPEED = 50;

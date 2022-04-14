@@ -1,3 +1,4 @@
+import { CHANGE_SPEED } from "../../../../06/quiz7/constant/bugSpeed.js";
 import { createEl } from "../../util/createEl.js";
 
 export function RandomShow({ $target, initialState }) {
@@ -6,7 +7,7 @@ export function RandomShow({ $target, initialState }) {
   $target.appendChild(this.$showText);
 
   this.randomLocation = function (max, min) {
-    return Math.floor(Math.random() * (max - min) + 1) + min;
+    return Math.floor(Math.random() * (max - 1 - min) + 1) + min;
   };
 
   this.setState = function (nextState) {
@@ -19,14 +20,16 @@ export function RandomShow({ $target, initialState }) {
 
     let count = this.$showText.innerText;
 
-    setInterval(() => {
+    this.timer = setInterval(() => {
+      console.log(value, count);
       if (count < value) {
-        this.$showText.innerText = `+${count++};
+        this.$showText.innerText = `+${count++}`;
       } else if (count > value) {
-        this.$showText.innerText = count--;
-      } else {
-        return;
+        this.$showText.innerText = `-${count--}`;
+      } else if (count == value) {
+        clearInterval(this.timer);
+        return (this.$showText.innerText = count);
       }
-    }, 50);
+    }, CHANGE_SPEED);
   };
 }
