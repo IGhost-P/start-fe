@@ -27,7 +27,12 @@ export default function App({ $target }) {
     initialState: this.state.searchText,
     onSubmit: async (text) => {
       const { documents } = await api.getSearch(text);
-      this.setState({ ...this.state, searchText: text, result: documents });
+      this.setState({
+        ...this.state,
+        searchText: text,
+        result: documents,
+        pageCount: 1,
+      });
     },
   });
 
