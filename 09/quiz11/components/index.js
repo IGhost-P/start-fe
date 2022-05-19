@@ -1,2 +1,2 @@
 export { InputForm } from "./InputForm/index.js";
-export { LogTextArea } from "./LogTextArea/index.js";
+export { Result } from "./Result/index.js";
