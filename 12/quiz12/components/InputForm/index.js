@@ -1,9 +1,9 @@
 export function InputForm({ $target, initialState, onSubmit }) {
-  this.state = initialState;
+  this.state;
 
-  console.log(this.state);
   $target.addEventListener("submit", (e) => {
     e.preventDefault();
+
     this.state = $target.querySelector("input").value;
 
     if (this.state === "") {
@@ -12,5 +12,6 @@ export function InputForm({ $target, initialState, onSubmit }) {
     }
 
     onSubmit(this.state);
+    $target.querySelector("input").value = "";
   });
 }

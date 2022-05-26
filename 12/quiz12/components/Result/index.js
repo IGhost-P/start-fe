@@ -1,8 +1,9 @@
-export function Result({ $target, initialState }) {
-  this.state = initialState;
+export function Result({ $target }) {
+  this.state = "";
 
   this.setState = function (nextState) {
     this.state = nextState;
+    console.log(this.state);
     this.render();
   };
 

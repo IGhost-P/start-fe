@@ -1,30 +1,36 @@
 import { $targetSelector } from "../../util/selector.js";
 import { InputForm, Result } from "../../components/index.js";
+import { avg } from "../../util/avg.js";
 export function AvgContainer({ $target }) {
   this.$avgInputForm = $targetSelector($target, "form");
   this.$result = $targetSelector($target, "#result");
 
   this.state = {
     searchText: "",
-    result: [],
   };
 
   this.setState = function (nextState) {
     this.state = nextState;
-    moreBtn.setState(this.state);
-    result.setState(athis.state.result);
+    result.setState(
+      avg(
+        this.state.searchText
+          .replace(/[\[\]']+/g, "")
+          .split(",")
+          .filter(Number)
+          .map(Number)
+      ).toFixed(1)
+    );
   };
 
   const avgInputForm = new InputForm({
     $target: this.$avgInputForm,
     initialState: this.state.searchText,
-    onInput: (searchText) => {
+    onSubmit: (searchText) => {
       this.setState({ searchText });
     },
   });
 
   const result = new Result({
     $target: this.$result,
-    initialState: this.state.result,
   });
 }

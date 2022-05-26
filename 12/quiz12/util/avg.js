@@ -5,5 +5,6 @@ export const avg = (...nums) => {
   for (let i = 0; i < nums.length; i++) {
     if (typeof nums[i] === "number") sum += nums[i];
   }
-  return (sum / nums.length).toFixed(1);
+
+  return sum / nums.length || "잘못된 값입니다";
 };
