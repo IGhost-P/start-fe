@@ -1,1 +1,1 @@
-export const CHANGE_SPEED = 50;
+export const CHANGE_SPEED = 500;

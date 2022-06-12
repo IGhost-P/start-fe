@@ -1,4 +1,4 @@
-import { BUG_SPEED } from "../../constant/bugSpeed.js";
+import { CHANGE_SPEED } from "../../constant/bugSpeed.js";
 import { createEl } from "../../util/createEl.js";
 
 export function CatchBox({ $target, addPoint, losePoint }) {
@@ -39,7 +39,7 @@ export function CatchBox({ $target, addPoint, losePoint }) {
       $target.offsetWidth - this.bugWidth
     );
     this.render(this.top, this.left);
-  }, BUG_SPEED);
+  }, CHANGE_SPEED);
 
   this.render();
 }

@@ -1,4 +1,4 @@
-import { CHANGE_SPEED } from "../../../../06/quiz7/constant/bugSpeed.js";
+import { CHANGE_SPEED } from "../../constant/bugSpeed.js";
 import { createEl } from "../../util/createEl.js";
 
 export function RandomShow({ $target, initialState }) {

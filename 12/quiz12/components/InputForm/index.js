@@ -3,7 +3,6 @@ export function InputForm({ $target, initialState, onSubmit }) {
 
   $target.addEventListener("submit", (e) => {
     e.preventDefault();
-
     this.state = $target.querySelector("input").value;
 
     if (this.state === "") {
